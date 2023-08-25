@@ -4,14 +4,20 @@ var userModel = require('./userModel');
 module.exports.getDataFromDBService = () => {
     return new Promise(function checkURL(resolve, reject) {
  
-        userModel.find({}, function returnData(error, result) {
+        // userModel.find({}, function returnData(error, result) {
  
-            if (error) {
-                reject(false);
-            } else {
+        //     if (error) {
+        //         reject(false);
+        //     } else {
          
-                resolve(result);
-            }
+        //         resolve(result);
+        //     }
+        // });
+        userModel.find().then(result => {
+            resolve(true);
+        })
+        .catch(error => {
+            reject(false);
         });
  
     });
@@ -33,13 +39,13 @@ module.exports.getDataFromDBService = () => {
             return reject(false);
         }
 
-        userModelData.save(function resultHandle(error, result) {
-            if (error) {
-                reject(false);
-            } else {
+        userModelData.save()
+            .then(result => {
                 resolve(true);
-            }
-        });
+            })
+            .catch(error => {
+                reject(false);
+            });
  
     });
  

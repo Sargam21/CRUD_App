@@ -18,7 +18,13 @@ const cors = require('cors');
 
 server.use(express.json());
 */
-const uri = "mongodb://127.0.0.1:27017/est";
+server.use(cors());
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+
+server.use(routes);
+
+const uri = "mongodb+srv://patilshruti2906:VIfRbHQSXyf5TerT@cluster0.2642enq.mongodb.net/LINKCODE?retryWrites=true&w=majority";
 mongoose
   .connect(
     uri,
@@ -30,11 +36,6 @@ mongoose
   .then(() => console.log("Connected to MongoDB!"))
   .catch((err) => console.error("Error connecting to MongoDB:", err));
 
-
-server.use(routes);
-server.use(cors());
-server.use(bodyParser.json()); 
-server.use(bodyParser.urlencoded({ extended: true }));
 
 server.listen(8000,function check(error){
     if(error){
