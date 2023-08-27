@@ -24,7 +24,8 @@ server.use(express.urlencoded({ extended: true }));
 
 server.use(routes);
 
-const uri = "mongodb://127.0.0.1:27017/est";
+const uri = "mongodb+srv://sargampote:OYAiVEN0Um8xjxri@cluster0.xbbn02s.mongodb.net/?retryWrites=true&w=majority"
+// "mongodb://127.0.0.1:27017/est";
 mongoose
   .connect(
     uri,
